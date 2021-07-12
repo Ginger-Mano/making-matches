@@ -1,23 +1,24 @@
-import logo from './logo.svg';
 import './App.css';
+import {useState, useEffect} from "react"
 
 function App() {
+
+  const [clicked, useClick] = useState(false)
+
+  let matchClick = (evt) => {
+    console.log(evt)
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+
+    <div className="div1">
+      <h2 onClick={matchClick} id="talk">hello</h2>
+    </div>
+
+    <div className="div2">
+      <h2 onClick={matchClick} id="talk">hello</h2>
+    </div>
+
     </div>
   );
 }
