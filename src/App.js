@@ -1,23 +1,35 @@
 import './App.css';
-import {useState, useEffect} from "react"
+import {useState, useEffect, useRef} from "react"
 
-function App() {
 
-  const [clicked, useClick] = useState(false)
+function  App() {
+  const toggle = useRef(null);
 
-  let matchClick = (evt) => {
-    console.log(evt)
+  const [clicked, setClick] = useState(false)
+
+  let matched = () => {
+    if (handleClick) {
+      toggle.current.remove()
+    }
   }
+  
+  let handleClick = (evt) => {
+      setClick(true)
+  }
+
+
   return (
     <div>
 
-    <div className="div1">
-      <h2 onClick={matchClick} id="talk">hello</h2>
+    <div >
+      <button className="div1" onClick={matched} id="talk" ref={toggle}>hello</button>
     </div>
 
-    <div className="div2">
-      <h2 onClick={matchClick} id="talk">hello</h2>
+    <div >
+      <button className="div2" onClick={matched} id="talk" ref={toggle}>hello</button>
     </div>
+
+
 
     </div>
   );
