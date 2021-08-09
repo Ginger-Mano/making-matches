@@ -1,38 +1,91 @@
 import './App.css';
-import {useState, useEffect, useRef} from "react"
+import React, {Component} from "react"
 
 
-function  App() {
-  const toggle = useRef(null);
+class App extends Component {
 
-  const [clicked, setClick] = useState(false)
+  state = {
+    button1: false,
+    button2: false,
+    clickedButtons: []
+  }
 
-  let matched = () => {
-    if (handleClick) {
-      toggle.current.remove()
+  removeChildren = (parent) => {
+    console.log(parent)
+    while (parent.firstChild) {
+      parent.remove(parent.firstChild)
     }
   }
-  
-  let handleClick = (evt) => {
-      setClick(true)
+
+  testing = () => {
+    let arr = ["one", "two", "three"];
+    
+    setInterval((word) => {
+      // console.log(word)
+      
+  }, 3000);
   }
 
+  handleClick = (evt) => {
+    // debugger
+ 
+  this.state.clickedButtons.push(evt.target.parentElement)
+  // console.log(evt)
+  console.log(this.state.clickedButtons)
+
+  if (this.state.clickedButtons.length === 2) {
+    // console.log(this.state.clickedButtons[0].className)
+    if (this.state.clickedButtons[0].className === this.state.clickedButtons[1].className) {
+      this.state.clickedButtons.forEach(div => this.removeChildren(div))
+      this.setState({
+        ...this.state, 
+        clickedButtons: []
+
+      })
+    } else {
+      this.setState({
+        ...this.state, 
+        clickedButtons: []
+
+      })
+    }
+    
+  }
+  }
+
+render () {
 
   return (
     <div>
+<div>
 
-    <div >
-      <button className="div1" onClick={matched} id="talk" ref={toggle}>hello</button>
-    </div>
+<div className="button1" >
+  <button onClick={this.handleClick} onMouseOver={this.testing}>1</button>
+</div>
 
-    <div >
-      <button className="div2" onClick={matched} id="talk" ref={toggle}>hello</button>
-    </div>
+<div className="button2">
+  <button onClick={this.handleClick}>2</button>
+</div>
+
+</div>
 
 
+<br></br>
+<div>
 
-    </div>
-  );
+<div className="button1">
+  <button onClick={this.handleClick} >1</button>
+</div>
+
+<div className="button2">
+  <button onClick={this.handleClick}>2</button>
+</div>
+
+</div>
+
+</div>
+
+  )
 }
-
+}
 export default App;
