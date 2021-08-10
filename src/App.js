@@ -10,11 +10,13 @@ class App extends Component {
     clickedButtons: []
   }
 
-  removeChildren = (parent) => {
-    console.log(parent)
-    while (parent.firstChild) {
-      parent.remove(parent.firstChild)
-    }
+  removeChildren = (parentElement) => {
+    console.log(parentElement)
+    // debugger
+    parentElement.remove(parentElement.firstChild)
+    // while (parentElement.firstChild) {
+    //   parentElement.remove(parentElement.firstChild)
+    // }
   }
 
   testing = () => {
@@ -37,6 +39,7 @@ class App extends Component {
     // console.log(this.state.clickedButtons[0].className)
     if (this.state.clickedButtons[0].className === this.state.clickedButtons[1].className) {
       this.state.clickedButtons.forEach(div => this.removeChildren(div))
+      // this.removeChildren(div)
       this.setState({
         ...this.state, 
         clickedButtons: []
@@ -74,11 +77,15 @@ render () {
 <div>
 
 <div className="button1">
-  <button onClick={this.handleClick} >1</button>
+  <button onClick={this.handleClick} >Four</button>
 </div>
 
 <div className="button2">
-  <button onClick={this.handleClick}>2</button>
+  <button onClick={this.handleClick}>One</button>
+</div>
+
+<div className="button3">
+  <button onClick={this.handleClick}>One</button>
 </div>
 
 </div>
