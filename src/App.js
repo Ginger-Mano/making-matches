@@ -9,7 +9,8 @@ class App extends Component {
     button2: false,
     clickedButtons: [],
     matchedButtonName: [],
-    notifyAlert: false
+    notifyAlert: false,
+    mouseOver: false
   }
 
   removeChildren = (parentElement) => {
@@ -21,11 +22,22 @@ class App extends Component {
     // }
   }
 
-  testing = () => {
+  testing = (evt) => {
     let arr = ["one", "two", "three"];
     setInterval((word) => {
+      //set state mouseOver to true
+      this.setState({
+        mouseOver: true
+      })
+      //if statement (if mouseOver is true)
+        //iterate through arr
+        //evt.target.innerText = that word
+        // evt.target.innerText = word
+      if (this.state.mouseOver) {
+        arr.forEach(word => evt.target.innerText = word)
+      }
       // console.log(word)
-  }, 3000);
+  }, 500);
   }
 
   nonMatchAlert = () => {
