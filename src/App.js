@@ -1,6 +1,7 @@
 import './App.css';
 import React, {Component} from "react"
-
+import Button from "./Button"
+let counter = 0;
 
 class App extends Component {
 
@@ -10,7 +11,10 @@ class App extends Component {
     clickedButtons: [],
     matchedButtonName: [],
     notifyAlert: false,
-    mouseOver: false
+    mouseOver: false,
+    arr: ["one","two","three"],
+    button1: {counter: 0},
+    button2: {counter: 0}
   }
 
   removeChildren = (parentElement) => {
@@ -23,22 +27,49 @@ class App extends Component {
   }
 
   testing = (evt) => {
-    let arr = ["one", "two", "three"];
-    setInterval((word) => {
-      //set state mouseOver to true
+    // debugger
+    // let arr = ["one", "two", "three"];
+
+    //    console.log(arr[counter++])
+       
+    //    if (counter > arr.length - 1) {
+    //      counter = 0;
+    //    }
+    let new_counter = this.state[evt.target.parentElement.className].counter + 1
+    // debugger
+    if(new_counter > this.state.arr.length - 1){
       this.setState({
-        mouseOver: true
+        ...this.state,
+        [evt.target.parentElement.className]: {...this.state[evt.target.parentElement.className], counter: 0}
       })
-      //if statement (if mouseOver is true)
-        //iterate through arr
-        //evt.target.innerText = that word
-        // evt.target.innerText = word
-      if (this.state.mouseOver) {
-        arr.forEach(word => evt.target.innerText = word)
-      }
-      // console.log(word)
-  }, 500);
-  }
+    } else {
+        this.setState({
+          ...this.state,
+          [evt.target.parentElement.className]: {...this.state[evt.target.parentElement.className], counter: new_counter}
+        })
+    }
+     evt.target.innerText = this.state.arr[this.state[evt.target.parentElement.className].counter]
+      
+    }
+
+  //   setInterval((word) => {
+  //     //set state mouseOver to true
+  //     // changeInnerText()
+  //     this.setState({
+  //       mouseOver: true
+  //     })
+  //     //if statement (if mouseOver is true)
+  //       //iterate through arr
+  //       //evt.target.innerText = that word
+  //       // evt.target.innerText = word
+       
+  //     if (this.state.mouseOver) {
+  //       arr.forEach(word => evt.target.innerText = word)
+  //     }
+  //     // console.log(word)
+  // }, 500);
+
+  // }
 
   nonMatchAlert = () => {
     this.setState({
@@ -102,8 +133,8 @@ render () {
 
   <div>
 
-    <div className="button1" >
-      <button onClick={this.handleClick} onMouseOver={this.testing}>1</button>
+  <div className="button1">
+      <button onClick={this.handleClick}>2</button>
     </div>
 
     <div className="button2">
@@ -116,9 +147,9 @@ render () {
 <br></br>
   <div>
 
-    <div className="button1">
-      <button onClick={this.handleMatched} >Four</button>
-    </div>
+    <Button counter={this.state.button1.counter} arr={["one", "two", "three"]} increment={this.testing} text={this.state.arr[0]} name={"button1"}/>
+
+    <Button counter={this.state.button1.counter} arr={["one", "two", "three"]} increment={this.testing} text={this.state.arr[0]} name={"button2"}/>
 
     <div className="button2">
       <button onClick={this.handleMatched}>One</button>
