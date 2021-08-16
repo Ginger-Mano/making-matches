@@ -21,22 +21,11 @@ class App extends Component {
     console.log(parentElement)
     // debugger
     parentElement.remove(parentElement.firstChild)
-    // while (parentElement.firstChild) {
-    //   parentElement.remove(parentElement.firstChild)
-    // }
   }
 
   testing = (evt) => {
-    // debugger
-    // let arr = ["one", "two", "three"];
-
-    //    console.log(arr[counter++])
-       
-    //    if (counter > arr.length - 1) {
-    //      counter = 0;
-    //    }
     let new_counter = this.state[evt.target.parentElement.className].counter + 1
-    // debugger
+ 
     if(new_counter > this.state.arr.length - 1){
       this.setState({
         ...this.state,
@@ -52,25 +41,6 @@ class App extends Component {
       
     }
 
-  //   setInterval((word) => {
-  //     //set state mouseOver to true
-  //     // changeInnerText()
-  //     this.setState({
-  //       mouseOver: true
-  //     })
-  //     //if statement (if mouseOver is true)
-  //       //iterate through arr
-  //       //evt.target.innerText = that word
-  //       // evt.target.innerText = word
-       
-  //     if (this.state.mouseOver) {
-  //       arr.forEach(word => evt.target.innerText = word)
-  //     }
-  //     // console.log(word)
-  // }, 500);
-
-  // }
-
   nonMatchAlert = () => {
     this.setState({
       notifyAlert: true
@@ -80,7 +50,7 @@ class App extends Component {
 
   handleClick = (evt) => { 
   this.state.clickedButtons.push(evt.target.parentElement)
-  // console.log(evt)
+  
   console.log(this.state.clickedButtons)
 
   if (this.state.clickedButtons.length === 2) {
@@ -147,16 +117,16 @@ render () {
 <br></br>
   <div>
 
-    <Button counter={this.state.button1.counter} arr={["one", "two", "three"]} increment={this.testing} text={this.state.arr[0]} name={"button1"}/>
+    <Button counter={this.state.button1.counter} arr={["one", "two", "three"]} increment={this.testing} text={this.state.arr[0]} name={"button1"} notifyAlert={this.state.notifyAlert} handleMatched={this.handleMatched}/>
 
-    <Button counter={this.state.button1.counter} arr={["one", "two", "three"]} increment={this.testing} text={this.state.arr[0]} name={"button2"}/>
+    <Button counter={this.state.button1.counter} arr={["one", "two", "three"]} increment={this.testing} text={this.state.arr[0]} handleMatched={this.handleMatched} name={"button2"}/>
 
     <div className="button2">
       <button onClick={this.handleMatched}>One</button>
     </div>
 
     <div className="button3">
-      <button onClick={this.handleMatched}>One</button>
+      <button onClick={this.handleMatched} notifyAlert={this.state.notifyAlert}>One</button>
     </div>
 
   </div>
