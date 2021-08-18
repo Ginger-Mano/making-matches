@@ -1,6 +1,26 @@
 import './App.css';
 import React, {Component} from "react"
-import Button from "./Button"
+import NewButton from "./NewButton"
+import Button from '@material-ui/core/Button';
+import { createTheme } from '@material-ui/core/styles';
+
+const theme = createTheme({
+  palette: {
+    primary: {
+      light: '#757ce8',
+      main: '#3f50b5',
+      dark: '#002884',
+      contrastText: '#fff',
+    },
+    secondary: {
+      light: '#ff7961',
+      main: '#f44336',
+      dark: '#ba000d',
+      contrastText: '#000',
+    },
+  },
+});
+
 let counter = 0;
 
 class App extends Component {
@@ -99,7 +119,7 @@ class App extends Component {
 render () {
 
   return (
-<div>
+<div >
 
   <div>
 
@@ -117,16 +137,30 @@ render () {
 <br></br>
   <div>
 
-    <Button counter={this.state.button1.counter} arr={["one", "two", "three"]} increment={this.testing} text={this.state.arr[0]} name={"button1"} notifyAlert={this.state.notifyAlert} handleMatched={this.handleMatched}/>
+    <NewButton counter={this.state.button1.counter} 
+                arr={["one", "Live Your Life!", "three"]} 
+                increment={this.testing} text={this.state.arr[0]} 
+                name={"button1"} 
+                notifyAlert={this.state.notifyAlert} 
+                handleMatched={this.handleMatched}/>
 
-    <Button counter={this.state.button1.counter} arr={["one", "two", "three"]} increment={this.testing} text={this.state.arr[0]} handleMatched={this.handleMatched} name={"button2"}/>
+    <NewButton counter={this.state.button1.counter} 
+                arr={["one", "Live Your Life!", "three"]} 
+                increment={this.testing} 
+                text={this.state.arr[0]} 
+                handleMatched={this.handleMatched} 
+                name={"button2"}/>
 
     <div className="button2">
-      <button onClick={this.handleMatched}>One</button>
+                <button onClick={this.handleMatched}>One</button>
     </div>
 
-    <div className="button3">
-      <button onClick={this.handleMatched} notifyAlert={this.state.notifyAlert}>One</button>
+    <div>
+      <Button className="button3" 
+              onClick={this.handleMatched} 
+              notifyAlert={this.state.notifyAlert} 
+              variant="outlined" 
+              style={{backgroundColor: '#12824C', color: '#FFFFFF' , size: "large"}}>One</Button>
     </div>
 
   </div>

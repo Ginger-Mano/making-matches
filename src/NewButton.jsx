@@ -1,4 +1,6 @@
-const Button = (props) => {
+import React from "react"
+
+const NewButton = (props) => {
     return (
         <div className={props.name}>
             <button onMouseOver={props.increment} notifyAlert={props.notifyAlert} onClick={props.handleMatched}>{props.text}</button>
@@ -9,4 +11,4 @@ const Button = (props) => {
 
 
 
-export default Button
+export default NewButton
