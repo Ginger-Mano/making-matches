@@ -32,7 +32,7 @@ class App extends Component {
     matchedButtonName: [],
     notifyAlert: false,
     mouseOver: false,
-    arr: ["one","two","three"],
+    arr: ["one","Live Your Life!","three"],
     button1: {counter: 0},
     button2: {counter: 0}
   }
@@ -138,14 +138,14 @@ render () {
   <div>
 
     <NewButton counter={this.state.button1.counter} 
-                arr={["one", "Live Your Life!", "three"]} 
+                arr={this.state.arr} 
                 increment={this.testing} text={this.state.arr[0]} 
                 name={"button1"} 
                 notifyAlert={this.state.notifyAlert} 
                 handleMatched={this.handleMatched}/>
 
     <NewButton counter={this.state.button1.counter} 
-                arr={["one", "Live Your Life!", "three"]} 
+                arr={this.state.arr} 
                 increment={this.testing} 
                 text={this.state.arr[0]} 
                 handleMatched={this.handleMatched} 
@@ -160,7 +160,7 @@ render () {
               onClick={this.handleMatched} 
               notifyAlert={this.state.notifyAlert} 
               variant="outlined" 
-              style={{backgroundColor: '#12824C', color: '#FFFFFF' , size: "large"}}>One</Button>
+              style={{backgroundColor: '#12824C', color: '#FFFFFF' , size: "small"}}>One</Button>
     </div>
 
   </div>
