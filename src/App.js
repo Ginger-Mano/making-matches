@@ -160,7 +160,7 @@ render () {
               onClick={this.handleMatched} 
               notifyAlert={this.state.notifyAlert} 
               variant="outlined" 
-              style={{backgroundColor: '#12824C', color: '#FFFFFF' , size: "small"}}>One</Button>
+              style={{backgroundColor: '#12824C', color: '#FFFFFF' , fontSize: 50}}>One</Button>
     </div>
 
   </div>
