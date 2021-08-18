@@ -3,6 +3,7 @@ import React, {Component} from "react"
 import NewButton from "./NewButton"
 import Button from '@material-ui/core/Button';
 import { createTheme } from '@material-ui/core/styles';
+import Grid from '@material-ui/core/Grid';
 
 const theme = createTheme({
   palette: {
@@ -136,32 +137,43 @@ render () {
 
 <br></br>
   <div>
-
+    <Grid container spacing={4}justify={"center"}>
+    
+    <Grid item>
     <NewButton counter={this.state.button1.counter} 
                 arr={this.state.arr} 
                 increment={this.testing} text={this.state.arr[0]} 
                 name={"button1"} 
                 notifyAlert={this.state.notifyAlert} 
                 handleMatched={this.handleMatched}/>
+                </Grid>
 
+    <Grid item>
     <NewButton counter={this.state.button1.counter} 
                 arr={this.state.arr} 
                 increment={this.testing} 
                 text={this.state.arr[0]} 
                 handleMatched={this.handleMatched} 
                 name={"button2"}/>
+                </Grid>
 
-    <div className="button2">
-                <button onClick={this.handleMatched}>One</button>
-    </div>
+    <Grid item>           
+      <Button className="button2" 
+              onClick={this.handleMatched} 
+              notifyAlert={this.state.notifyAlert} 
+              variant="outlined" 
+              style={{backgroundColor: '#12824C', color: '#FFFFFF' , fontSize: 50}}>One</Button>
+    </Grid>
 
-    <div>
+    <Grid item>
       <Button className="button3" 
               onClick={this.handleMatched} 
               notifyAlert={this.state.notifyAlert} 
               variant="outlined" 
               style={{backgroundColor: '#12824C', color: '#FFFFFF' , fontSize: 50}}>One</Button>
-    </div>
+    </Grid>
+
+    </Grid>
 
   </div>
 
