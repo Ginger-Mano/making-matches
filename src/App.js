@@ -5,24 +5,7 @@ import Button from '@material-ui/core/Button';
 import { createTheme } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 
-const theme = createTheme({
-  palette: {
-    primary: {
-      light: '#757ce8',
-      main: '#3f50b5',
-      dark: '#002884',
-      contrastText: '#fff',
-    },
-    secondary: {
-      light: '#ff7961',
-      main: '#f44336',
-      dark: '#ba000d',
-      contrastText: '#000',
-    },
-  },
-});
 
-let counter = 0;
 
 class App extends Component {
 
@@ -33,18 +16,22 @@ class App extends Component {
     matchedButtonName: [],
     notifyAlert: false,
     mouseOver: false,
-    arr: ["one","Live Your Life!","three"],
+    arr: ["one","two","three"],
     button1: {counter: 0},
-    button2: {counter: 0}
+    button2: {counter: 0},
+    button3: {counter: 0}
   }
+
 
   removeChildren = (parentElement) => {
     console.log(parentElement)
-    // debugger
     parentElement.remove(parentElement.firstChild)
   }
 
+
   testing = (evt) => {
+    // debugger
+    console.log(evt)
     let new_counter = this.state[evt.target.parentElement.className].counter + 1
  
     if(new_counter > this.state.arr.length - 1){
@@ -62,12 +49,14 @@ class App extends Component {
       
     }
 
+
   nonMatchAlert = () => {
     this.setState({
       notifyAlert: true
     })
     alert("Not a Match! Try Again")
   }
+
 
   handleClick = (evt) => { 
   this.state.clickedButtons.push(evt.target.parentElement)
@@ -93,10 +82,10 @@ class App extends Component {
   }
 }
 
+
   handleMatched = (evt) => {
     console.log(evt)
     this.state.matchedButtonName.push(evt.target.parentElement)
-    // debugger
     if (this.state.matchedButtonName.length === 2) {
         if (this.state.matchedButtonName[0].innerText === this.state.matchedButtonName[1].innerText) {
           console.log("Yes!")
@@ -117,23 +106,15 @@ class App extends Component {
     }
   }
 
+
 render () {
 
   return (
 <div >
 
-  <div>
-
-  <div className="button1">
-      <button onClick={this.handleClick}>2</button>
-    </div>
-
-    <div className="button2">
-      <button onClick={this.handleClick}>2</button>
-    </div>
-
-  </div>
-
+  <h2>Mouse over the first two buttons to see the text change</h2>
+  <h2>Double click on a button to make it disappear</h2>
+  <h2>Click on two buttons with a different name to get an alert</h2>
 
 <br></br>
   <div>
@@ -149,29 +130,32 @@ render () {
                 </Grid>
 
     <Grid item>
-    <NewButton counter={this.state.button1.counter} 
+    <NewButton     
+                counter={this.state.button2.counter} 
                 arr={this.state.arr} 
                 increment={this.testing} 
                 text={this.state.arr[0]} 
                 handleMatched={this.handleMatched} 
-                name={"button2"}/>
+                name={"button2"}
+                />
                 </Grid>
 
     <Grid item>           
       <Button className="button2" 
               onClick={this.handleMatched} 
               notifyAlert={this.state.notifyAlert} 
-              variant="outlined" 
-              style={{backgroundColor: '#12824C', color: '#FFFFFF' , fontSize: 50}}>One</Button>
+              variant="outlined"
+              color="primary"
+              style={{fontSize: 50}}>One</Button>
     </Grid>
 
-    <Grid item>
+     <Grid item>
       <Button className="button3" 
               onClick={this.handleMatched} 
               notifyAlert={this.state.notifyAlert} 
               variant="outlined" 
               style={{backgroundColor: '#12824C', color: '#FFFFFF' , fontSize: 50}}>One</Button>
-    </Grid>
+    </Grid> 
 
     </Grid>
 
